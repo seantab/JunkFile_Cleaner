@@ -1,0 +1,37 @@
+# ========================================================================
+# File Cleaner Bot - Git Ignore
+# ========================================================================
+# Exclude logs, backups, and temporary files
+# 
+# Authored and Architect: Sean Tabrizi
+# Email: seantab@gmail.com
+# ========================================================================
+
+# Log directories
+logs/
+FileCleaner_logs/
+*.log
+
+# Backup directories
+_FileCleaner_Backup/
+_Backup/
+*.zip
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+
+# Windows thumbnail cache
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# PowerShell module cache
+PSReadLine/
