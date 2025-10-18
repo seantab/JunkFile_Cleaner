@@ -1261,7 +1261,12 @@ function Perform-Cleanup {
                     }
                     else {
                         # Handle file - backup then delete
-                        $relativePath = $originalPath.Replace($RootDir, "").TrimStart('\')
+                        # Use target directory for relative path, or fall back to original path's directory
+                        $baseDir = if ($global:TargetDirectory) { $global:TargetDirectory } else { Split-Path $originalPath -Parent }
+                        $relativePath = $originalPath.Replace($baseDir, "").TrimStart('\')
+                        if ([string]::IsNullOrWhiteSpace($relativePath)) {
+                            $relativePath = Split-Path $originalPath -Leaf
+                        }
                         $entry = $zip.CreateEntry($relativePath)
                         
                         # Use using statement pattern for proper disposal
